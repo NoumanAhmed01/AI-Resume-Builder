@@ -6,6 +6,12 @@
 }
 @layer base {
   button {
-    cursor: pointer;
+    @apply cursor-pointer;
+  }
+  input:not([type="checkbox"]) {
+    @apply outline-none focus:ring border-gray-300 focus:ring-blue-500 focus:border-blue-500 rounded-lg;
+  }
+  textarea{
+    @apply outline-none focus:ring border-gray-300 focus:ring-blue-500 focus:border-blue-500 rounded-lg resize-none;
   }
 }
