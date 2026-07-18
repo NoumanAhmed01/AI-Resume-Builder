@@ -85,7 +85,12 @@ export const updateResume = async (req, res) => {
     const { resumeId, resumeData, removeBackground } = req.body;
     const image = req.file;
 
-    let resumeDataCopy = JSON.parse(resumeData);
+    let resumeDataCopy;
+    if (typeof resumeData === "string") {
+      resumeDataCopy = await JSON.parse(resumeData);
+    } else {
+      resumeDataCopy = structuredClone(resumeData);
+    }
 
     if (image) {
       const imageBufferData = fs.createReadStream(image.path);
@@ -99,8 +104,9 @@ export const updateResume = async (req, res) => {
             (removeBackground ? ",e-bgremove" : ""),
         },
       });
-      resumeDataCopy.personal_info.image = responce.url;
+      resumeDataCopy.personal_info.image = response.url;
     }
+
     //get resume
     const resume = await Resume.findByIdAndUpdate(
       { userId, _id: resumeId },
