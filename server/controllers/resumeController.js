@@ -92,6 +92,12 @@ export const updateResume = async (req, res) => {
       resumeDataCopy = structuredClone(resumeData);
     }
 
+    // Delete immutable fields so MongoDB doesn't reject the update
+    delete resumeDataCopy._id;
+    delete resumeDataCopy.userId;
+    delete resumeDataCopy.createdAt;
+    delete resumeDataCopy.updatedAt;
+
     if (image) {
       const imageBufferData = fs.createReadStream(image.path);
       const response = await imageKit.files.upload({
@@ -99,16 +105,20 @@ export const updateResume = async (req, res) => {
         fileName: "resume.png",
         folder: "user-resumes",
         transformation: {
-          pre:
-            "w-300, h-300, fo-face, z-0.75" +
-            (removeBackground ? ",e-bgremove" : ""),
+          pre: "w-300, h-300, fo-face, z-0.75", // Keep only basic resizing & cropping here
         },
       });
-      resumeDataCopy.personal_info.image = response.url;
+
+      // Append ImageKit URL transformation parameter if background removal is requested
+      let imageUrl = response.url;
+      if (removeBackground === "yes") {
+        imageUrl += "?tr=e-bgremove";
+      }
+      resumeDataCopy.personal_info.image = imageUrl;
     }
 
     //get resume
-    const resume = await Resume.findByIdAndUpdate(
+    const resume = await Resume.findOneAndUpdate(
       { userId, _id: resumeId },
       resumeDataCopy,
       { new: true },
@@ -121,6 +131,7 @@ export const updateResume = async (req, res) => {
       .status(200)
       .json({ message: "Resume updated successfully", resume });
   } catch (error) {
+    console.error("Error in updateResume:", error);
     return res.status(400).json({ message: error.message });
   }
 };

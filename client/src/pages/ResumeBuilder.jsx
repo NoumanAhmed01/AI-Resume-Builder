@@ -115,8 +115,11 @@ const ResumeBuilder = () => {
     try {
       let updateResumeData = structuredClone(resumeData);
 
-      //remove image from data
-      if (typeof resumeData.personal_info === "object") {
+      // Remove image from data only if it is a File object (to prevent JSON serialization issues)
+      if (
+        typeof resumeData.personal_info === "object" &&
+        typeof resumeData.personal_info.image === "object"
+      ) {
         delete updateResumeData.personal_info.image;
       }
 
@@ -133,6 +136,9 @@ const ResumeBuilder = () => {
       toast.success(data.message);
     } catch (error) {
       console.error("Error saving resume:", error);
+      console.error("Error saving resume:", error);
+      const errMsg = error.response?.data?.message || error.message;
+      toast.error(`Error saving: ${errMsg}`); // <-- Shows the server's error message
     }
   };
 

@@ -10,7 +10,7 @@ export const enhanceProfessionalSummary = async (req, res) => {
     if (!userContent) {
       return res.status(400).json({ message: "Missing requried fields" });
     }
-    const responce = await ai.chat.completions.create({
+    const response = await ai.chat.completions.create({
       model: process.env.OPENAI_MODEL,
       messages: [
         {
@@ -25,7 +25,7 @@ export const enhanceProfessionalSummary = async (req, res) => {
       ],
     });
 
-    const enhancedContent = responce.choices[0].message.content;
+    const enhancedContent = response.choices[0].message.content;
     return res.status(200).json({ enhancedContent });
   } catch (error) {
     return res.status(400).json({ message: error.message });
@@ -41,7 +41,7 @@ export const enhanceJobDescription = async (req, res) => {
     if (!userContent) {
       return res.status(400).json({ message: "Missing requried fields" });
     }
-    const responce = await ai.chat.completions.create({
+    const response = await ai.chat.completions.create({
       model: process.env.OPENAI_MODEL,
       messages: [
         {
@@ -56,7 +56,7 @@ export const enhanceJobDescription = async (req, res) => {
       ],
     });
 
-    const enhancedContent = responce.choices[0].message.content;
+    const enhancedContent = response.choices[0].message.content;
     return res.status(200).json({ enhancedContent });
   } catch (error) {
     return res.status(400).json({ message: error.message });
@@ -119,7 +119,7 @@ export const uploadResume = async (req, res) => {
     ],
     } `;
 
-    const responce = await ai.chat.completions.create({
+    const response = await ai.chat.completions.create({
       model: process.env.OPENAI_MODEL,
       messages: [
         { role: "system", content: systemPrompt },
@@ -131,7 +131,7 @@ export const uploadResume = async (req, res) => {
       response_format: { type: "json_object" },
     });
 
-    const extractedData = responce.choices[0].message.content;
+    const extractedData = response.choices[0].message.content;
     const parsedData = JSON.parse(extractedData);
     const newResume = await Resume.create({ userId, title, ...parsedData });
 
