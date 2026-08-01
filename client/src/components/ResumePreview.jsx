@@ -21,6 +21,7 @@ const ResumePreview = ({ data, template, accentColor, classes = "" }) => {
   return (
     <div className="w-full bg-gray-100">
       <div
+        id="resume-preview"
         className={
           "border border-gray-200 print:shadow-none print:border-none" + classes
         }
@@ -58,6 +59,9 @@ const ResumePreview = ({ data, template, accentColor, classes = "" }) => {
               padding: 0;
               box-shadow: none !important;
               border: none !important;
+              /* Force browser to print background colors and graphics */
+              print-color-adjust: exact;
+              -webkit-print-color-adjust: exact;
             }
           }
         `}
