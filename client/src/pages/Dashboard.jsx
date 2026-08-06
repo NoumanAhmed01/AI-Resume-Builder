@@ -214,12 +214,12 @@ const Dashboard = () => {
               <input
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
-                className="w-full px-4 py-2 mb-4 focus:border-green-600 ring-green-600"
+                className="w-full px-4 py-2 mb-4 focus:border-blue-600 ring-blue-600 border border-gray-300 rounded outline-none"
                 required
                 type="text"
                 placeholder="Enter resume title"
               />
-              <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
+              <button className="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors font-medium">
                 Create Resume
               </button>
               <XIcon
@@ -247,7 +247,7 @@ const Dashboard = () => {
               <input
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
-                className="w-full px-4 py-2 mb-4 focus:border-green-600 ring-green-600"
+                className="w-full px-4 py-2 mb-4 focus:border-blue-600 ring-blue-600 border border-gray-300 rounded outline-none"
                 type="text"
                 placeholder="Enter resume title"
                 required
@@ -259,7 +259,7 @@ const Dashboard = () => {
                   className="block text-sm text-slate-700"
                 >
                   Select resume file
-                  <div className="flex flex-col items-center justify-center gap-2 border group text-slate-400 border-slate-400 border-dashed rounded-md p-4 py-10 my-4 hover:border-green-500 hover:text-green-700 cursor-pointer transition-colors">
+                  <div className="flex flex-col items-center justify-center gap-2 border group text-slate-400 border-slate-400 border-dashed rounded-md p-4 py-10 my-4 hover:border-blue-500 hover:text-blue-700 cursor-pointer transition-colors">
                     {resume ? (
                       <p className="text-gray-700">{resume.name}</p>
                     ) : (
@@ -281,7 +281,7 @@ const Dashboard = () => {
 
               <button
                 disabled={isLoading}
-                className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+                className="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 font-medium"
               >
                 {isLoading && (
                   <LoaderCircleIcon className="animate-spin size-4 text-white" />
@@ -313,12 +313,12 @@ const Dashboard = () => {
               <input
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
-                className="w-full px-4 py-2 mb-4 focus:border-green-600 ring-green-600"
+                className="w-full px-4 py-2 mb-4 focus:border-blue-600 ring-blue-600 border border-gray-300 rounded outline-none"
                 required
                 type="text"
                 placeholder="Enter resume title"
               />
-              <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
+              <button className="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors font-medium">
                 Update
               </button>
               <XIcon

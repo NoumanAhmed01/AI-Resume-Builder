@@ -81,14 +81,14 @@ const Login = () => {
             required
           />
         </div>
-        <div className="mt-4 text-left text-green-500">
+        <div className="mt-4 text-left text-blue-600">
           <button className="text-sm" type="reset">
             Forget password?
           </button>
         </div>
         <button
           type="submit"
-          className="mt-2 w-full h-11 rounded-full text-white bg-green-500 hover:opacity-90 transition-opacity"
+          className="mt-2 w-full h-11 rounded-full text-white bg-blue-600 hover:bg-blue-700 transition-colors font-medium"
         >
           {state === "login" ? "Login" : "Sign up"}
         </button>
@@ -101,7 +101,7 @@ const Login = () => {
           {state === "login"
             ? "Don't have an account?"
             : "Already have an account?"}{" "}
-          <a href="#" className="text-green-500 hover:underline">
+          <a href="#" className="text-blue-600 hover:underline">
             click here
           </a>
         </p>

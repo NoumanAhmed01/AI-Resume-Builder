@@ -48,7 +48,7 @@ const Preview = () => {
           </p>
           <a
             href="/"
-            className="mt-6 bg-green-500 hover:bg-green-600 text-white rounded-full px-6 h-9 m-1 ring-offset-1 ring-1 ring-green-400 flex items-center transition-colors"
+            className="mt-6 bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 h-9 m-1 ring-offset-1 ring-1 ring-blue-400 flex items-center transition-colors font-medium"
           >
             <ArrowLeftIcon className="mr-2 size-4" />
             go to home page

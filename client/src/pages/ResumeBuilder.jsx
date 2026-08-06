@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { dummyResumeData } from "../assets/assets";
 import {
   ArrowLeftIcon,
   Briefcase,
@@ -161,7 +160,7 @@ const ResumeBuilder = () => {
               {/* Progress bar using activesectionindex */}
               <hr className="absolute top-0 left-0 right-0 border-2 border-gray-200" />
               <hr
-                className="absolute top-0 left-0 h-1 bg-linear-to-r from-green-500 to-green-600 border-none transition-all duration-200"
+                className="absolute top-0 left-0 h-1 bg-linear-to-r from-blue-500 to-blue-600 border-none transition-all duration-200"
                 style={{
                   width: `${(activeSectionIndex * 100) / (section.length - 1)}%`,
                 }}
@@ -293,7 +292,7 @@ const ResumeBuilder = () => {
                 onClick={() => {
                   toast.promise(saveResume, { loading: "Saving" });
                 }}
-                className="bg-linear-to-br from-green-100 to-green-200 ring-green-300 text-green-600 ring hover:ring-green-400 transition-all rounded-md px-6 py-2 mt-6 text-sm"
+                className="bg-linear-to-br from-blue-100 to-blue-200 ring-blue-300 text-blue-600 ring hover:ring-blue-400 transition-all rounded-md px-6 py-2 mt-6 text-sm font-medium"
               >
                 Save Changes
               </button>
@@ -326,7 +325,7 @@ const ResumeBuilder = () => {
 
                 <button
                   onClick={downloadResume}
-                  className="flex items-center py-2 px-6 gap-2 text-xs bg-linear-to-br from-green-100 to-green-200 text-green-600 rounded-lg ring-green-300 hover:ring transition-colors"
+                  className="flex items-center py-2 px-6 gap-2 text-xs bg-linear-to-br from-sky-100 to-sky-200 text-sky-700 rounded-lg ring-sky-300 hover:ring transition-colors font-medium"
                 >
                   <DownloadIcon className="size-4" /> Download
                 </button>
